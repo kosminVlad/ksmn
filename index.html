@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <title>Summary_ITC_bot</title>
+</head>
+
+<body>
+
+  <header>
+    <div class="header-container">
+      <h1 class="logo">Summary_ITC_bot</h1>
+      <nav class="header__menu">
+        <ul>
+          <li><a href="pages/main/main.html"> Главная </a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- <div class="status error">Ошибка!</div>
+    <div class="status successfully">Успешно!</div> -->
+
+  <main>
+    <div class="main-container">
+      <div class="welcome-block">
+        <p class="text-1">
+          <span class="big-word"> Добро пожаловать </span><br />
+          в сервис, который превращает статьи в теги + краткое описание за
+          секунды
+        </p>
+
+        <div class="text-2">
+          <p>
+            Как это работает? <br />
+            1. 🔗 Вставь ссылку на статью в поле ниже <br />
+            2. 🎯 Получи: <br />
+            - 📌 Ключевые теги <br />
+            - 📝 Сжатое описание <br />
+            - 🔗 Оригинальная ссылка
+          </p>
+        </div>
+      </div>
+
+      <div class="main-content">
+        <div class="main-content__input">
+          <textarea id="chat-input" class="main-content__textarea" placeholder="Введите вашу ссылку"></textarea>
+          <button class="main-content__button" id="analyze_button">
+            Анализировать
+          </button>
+        </div>
+
+        <div class="generated-content" id="generated-content">
+
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+  <script src="auth.js"></script>
+</body>
+
+</html>
