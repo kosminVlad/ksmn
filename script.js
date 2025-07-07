@@ -25,53 +25,44 @@ analyzeButton.addEventListener('click', async function() {
         return;
     }
 
-    fetch("http://77.110.112.103:8000/api/summary/create/url")
-        .then(res => {
-            if (!response.ok) console.log(res)
-        }).catch(err => {
-            console.log(err)
-        })
-
-    // try {
-    //     // Показываем индикатор загрузки
-    //     analyzeButton.disabled = true;
-    //     analyzeButton.textContent = 'Анализируем...';
-
+    try {
+        // Показываем индикатор загрузки
+        analyzeButton.disabled = true;
+        analyzeButton.textContent = 'Анализируем...';
         
-        
-    //     // Отправляем GET запрос к API с параметром URL
-    //     const response = await fetch(`${API_URL}?url=${url}`);
+        // Отправляем GET запрос к API с параметром URL
+        const response = await fetch(`${API_URL}?url=${url}`)
 
-    //     if (!response.ok) {
-    //         throw new Error(`Ошибка API: ${response.status}`);
-    //     }
+        if (!response.ok) {
+            throw new Error(`Ошибка API: ${response.status}`);
+        }
 
-    //     const data = await response.json();
+        const data = await response.json();
         
-    //     // Создаем объект для истории
-    //     const historyItem = {
-    //         url: decodeURIComponent(url),
-    //         summary: data.summary,
-    //         tags: data.tags,
-    //         timestamp: new Date().toISOString()
-    //     };
+        // Создаем объект для истории
+        const historyItem = {
+            url: decodeURIComponent(url),
+            summary: data.summary,
+            tags: data.tags,
+            timestamp: new Date().toISOString()
+        };
 
-    //     // Добавляем в историю и отображаем
-    //     addToHistory(historyItem);
-    //     chatInput.value = ''; // Очищаем поле ввода
+        // Добавляем в историю и отображаем
+        addToHistory(historyItem);
+        chatInput.value = ''; // Очищаем поле ввода
         
-    // } catch (error) {
-    //     console.error('Ошибка при анализе:', error);
-    //     generatedContent.innerHTML = `
-    //         <div class="error-card" style="color: red; padding: 15px; border: 1px solid red; border-radius: 8px;">
-    //             Ошибка при анализе ссылки: ${error.message}
-    //         </div>
-    //     `;
-    // } finally {
-    //     // Восстанавливаем кнопку
-    //     analyzeButton.disabled = false;
-    //     analyzeButton.textContent = 'Анализировать';
-    // }
+    } catch (error) {
+        console.error('Ошибка при анализе:', error);
+        generatedContent.innerHTML = `
+            <div class="error-card" style="color: red; padding: 15px; border: 1px solid red; border-radius: 8px;">
+                Ошибка при анализе ссылки: ${error.message}
+            </div>
+        `;
+    } finally {
+        // Восстанавливаем кнопку
+        analyzeButton.disabled = false;
+        analyzeButton.textContent = 'Анализировать';
+    }
 });
 
 // Остальные функции остаются без изменений
